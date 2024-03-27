@@ -2,7 +2,7 @@
 
 This is my ESLint config for Vue projects, customized from @antfu/eslint-config.
 
-> [!USAGE LIMITATION]
+> [!IMPORTANT]
 > Please refer to ESLint's documentation. [ESLint Configuration Files (New)](https://eslint.org/docs/latest/use/configure/configuration-files-new)
 
 ## Install
