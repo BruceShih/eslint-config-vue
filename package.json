@@ -1,0 +1,40 @@
+{
+  "name": "@bruceshih/eslint-config-vue",
+  "version": "0.0.1",
+  "packageManager": "pnpm@8.15.5",
+  "description": "Bruce's eslint config for Vue",
+  "author": "Bruce Shih",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BruceShih/eslint-config-vue/issues"
+  },
+  "homepage": "https://github.com/BruceShih/eslint-config-vue#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BruceShih/eslint-config-vue.git"
+  },
+  "keywords": [
+    "eslint-config"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "eslint-flat-config-viewer",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.11.0",
+    "eslint": "^8.57.0",
+    "eslint-flat-config-viewer": "^0.1.14",
+    "typescript": "^5.4.3"
+  }
+}
