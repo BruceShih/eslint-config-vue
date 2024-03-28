@@ -1,11 +1,5 @@
-import antfu from '@antfu/eslint-config'
+import { bruceshih } from './factory'
 
-const config = antfu({
-  astro: false,
-  react: false,
-  svelte: false,
-  vue: true,
-  typescript: true,
-})
+export * from './factory'
 
-export { config as bruceshih }
+export default bruceshih

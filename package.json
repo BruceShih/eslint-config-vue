@@ -1,6 +1,6 @@
 {
   "name": "@bruceshih/eslint-config-vue",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "packageManager": "pnpm@8.15.5",
   "description": "Bruce's eslint config for Vue",
   "author": "Bruce Shih",
@@ -29,12 +29,27 @@
   ],
   "scripts": {
     "dev": "eslint-flat-config-viewer",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsup --format esm,cjs --clean --dts",
+    "lint": "eslint .",
+    "test": "vitest"
+  },
+  "peerDependencies": {
+    "@antfu/eslint-config": "^2.11.3",
+    "eslint": ">=8.40.0",
+    "eslint-flat-config-utils": "^0.1.2"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.11.0",
-    "eslint": "^8.57.0",
+    "@bruceshih/eslint-config-vue": "workspace:*",
+    "@types/fs-extra": "^11.0.4",
+    "eslint-flat-config-utils": "^0.1.2",
     "eslint-flat-config-viewer": "^0.1.14",
-    "typescript": "^5.4.3"
+    "execa": "^8.0.1",
+    "fast-glob": "^3.3.2",
+    "fs-extra": "^11.2.0",
+    "jiti": "^1.21.0",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.3",
+    "vitest": "^1.4.0",
+    "vue": "^3.4.21"
   }
 }
