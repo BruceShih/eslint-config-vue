@@ -10,6 +10,11 @@ const bruceshih = jiti('./src').default
 export default bruceshih({
   ignores: [
     'subjects',
-    '_subjects',
-  ],
+    '_subjects'
+  ]
+}, {
+  rules: {
+    'style/comma-dangle': ['error', 'never'],
+    'style/semi': ['error', 'always']
+  }
 })

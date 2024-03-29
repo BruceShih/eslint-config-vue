@@ -1,10 +1,18 @@
 import antfu from '@antfu/eslint-config'
 import type { ESLintConfigOptions, ESLintConfigUserConfigs } from './types'
 
-const configDefaults: ESLintConfigOptions = {}
+const configDefaults: ESLintConfigOptions = {
+  formatters: true,
+  vue: true
+}
 
 // TODO: add my own preferred rules
-const userConfigDefaults: ESLintConfigUserConfigs = {}
+const userConfigDefaults: ESLintConfigUserConfigs = {
+  rules: {
+    'style/comma-dangle': ['error', 'never'],
+    'style/semi': ['error', 'always']
+  }
+}
 
 /**
  * Construct an array of ESLint flat config items.
