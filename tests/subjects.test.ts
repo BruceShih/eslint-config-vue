@@ -3,6 +3,7 @@ import { afterAll, beforeAll, it } from 'vitest'
 import fs from 'fs-extra'
 import { execa } from 'execa'
 import fg from 'fast-glob'
+import type { ESLintConfigOptions, ESLintConfigUserConfigs } from 'src/types'
 
 beforeAll(async () => {
   await fs.rm('_subjects', { recursive: true, force: true })
@@ -11,9 +12,70 @@ afterAll(async () => {
   await fs.rm('_subjects', { recursive: true, force: true })
 })
 
-runWithConfig('all')
+runWithConfig('js', {
+  typescript: false,
+  vue: false,
+})
+runWithConfig('all', {
+  typescript: true,
+  vue: true,
+})
+runWithConfig('no-style', {
+  typescript: true,
+  vue: true,
+  stylistic: false,
+})
+runWithConfig(
+  'tab-double-quotes',
+  {
+    typescript: true,
+    vue: true,
+    stylistic: {
+      indent: 'tab',
+      quotes: 'double',
+    },
+  },
+  {
+    rules: {
+      'style/no-mixed-spaces-and-tabs': 'off',
+    },
+  },
+)
 
-function runWithConfig(name: string) {
+// https://github.com/antfu/eslint-config/issues/255
+runWithConfig(
+  'ts-override',
+  {
+    typescript: true,
+  },
+  {
+    rules: {
+      'ts/consistent-type-definitions': ['error', 'type'],
+    },
+  },
+)
+
+runWithConfig(
+  'with-formatters',
+  {
+    typescript: true,
+    vue: true,
+    formatters: true,
+  },
+)
+
+runWithConfig(
+  'no-markdown-with-formatters',
+  {
+    vue: false,
+    markdown: false,
+    formatters: {
+      markdown: true,
+    },
+  },
+)
+
+function runWithConfig(name: string, configs: ESLintConfigOptions, ...items: ESLintConfigUserConfigs[]) {
   it.concurrent(name, async ({ expect }) => {
     const from = resolve('subjects/input')
     const output = resolve('subjects/output', name)
@@ -28,7 +90,10 @@ function runWithConfig(name: string) {
 // @eslint-disable
 import bruceshih from '@bruceshih/eslint-config-vue'
 
-export default bruceshih()
+export default bruceshih(
+  ${JSON.stringify(configs)},
+  ...${JSON.stringify(items) ?? []},
+)
   `)
 
     await execa('npx', ['eslint', '.', '--fix'], {

@@ -5,6 +5,7 @@ const configDefaults: ESLintConfigOptions = {
   astro: false,
   react: false,
   svelte: false,
+  jsx: false,
   vue: true,
   typescript: true,
   formatters: true,
