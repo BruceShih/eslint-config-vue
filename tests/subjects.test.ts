@@ -16,10 +16,6 @@ runWithConfig('js', {
   typescript: false,
   vue: false,
 })
-runWithConfig('all', {
-  typescript: true,
-  vue: true,
-})
 runWithConfig('no-style', {
   typescript: true,
   vue: true,

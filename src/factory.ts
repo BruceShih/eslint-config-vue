@@ -1,16 +1,9 @@
 import antfu from '@antfu/eslint-config'
 import type { ESLintConfigOptions, ESLintConfigUserConfigs } from './types'
 
-const configDefaults: ESLintConfigOptions = {
-  astro: false,
-  react: false,
-  svelte: false,
-  jsx: false,
-  vue: true,
-  typescript: true,
-  formatters: true,
-}
+const configDefaults: ESLintConfigOptions = {}
 
+// TODO: add my own preferred rules
 const userConfigDefaults: ESLintConfigUserConfigs = {}
 
 /**
