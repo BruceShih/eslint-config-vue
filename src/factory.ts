@@ -1,5 +1,5 @@
-import antfu from "@antfu/eslint-config"
-import { ESLintConfigOptions, ESLintConfigUserConfigs } from "./types"
+import antfu from '@antfu/eslint-config'
+import type { ESLintConfigOptions, ESLintConfigUserConfigs } from './types'
 
 const configDefaults: ESLintConfigOptions = {
   astro: false,
@@ -14,10 +14,10 @@ const userConfigDefaults: ESLintConfigUserConfigs = {}
 
 /**
  * Construct an array of ESLint flat config items.
- * 
- * @param {ESLintConfigOptions} options 
+ *
+ * @param {ESLintConfigOptions} options
  *  The options for generating the ESLint configurations.
- * @param {ESLintConfigUserConfigs} userConfigs 
+ * @param {ESLintConfigUserConfigs} userConfigs
  *  The user configurations to be merged with the generated configurations.
  * @returns {ReturnType<typeof antfu>}
  *  The merged ESLint configurations.

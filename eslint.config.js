@@ -7,4 +7,4 @@ const jiti = JITI(import.meta.url)
  */
 const bruceshih = jiti('./src').default
 
-export default bruceshih();
+export default bruceshih()
