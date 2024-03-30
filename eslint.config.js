@@ -1,20 +1,15 @@
 // @ts-check
-import JITI from 'jiti'
+import JITI from 'jiti';
 
-const jiti = JITI(import.meta.url)
+const jiti = JITI(import.meta.url);
 /**
  * @type {import('./src').default}
  */
-const bruceshih = jiti('./src').default
+const bruceshih = jiti('./src').default;
 
 export default bruceshih({
   ignores: [
     'subjects',
     '_subjects'
   ]
-}, {
-  rules: {
-    'style/comma-dangle': ['error', 'never'],
-    'style/semi': ['error', 'always']
-  }
-})
+});

@@ -1,10 +1,10 @@
-import antfu from '@antfu/eslint-config'
-import type { ESLintConfigOptions, ESLintConfigUserConfigs } from './types'
+import antfu from '@antfu/eslint-config';
+import type { ESLintConfigOptions, ESLintConfigUserConfigs } from './types';
 
 const configDefaults: ESLintConfigOptions = {
   formatters: true,
   vue: true
-}
+};
 
 // TODO: add my own preferred rules
 const userConfigDefaults: ESLintConfigUserConfigs = {
@@ -12,7 +12,7 @@ const userConfigDefaults: ESLintConfigUserConfigs = {
     'style/comma-dangle': ['error', 'never'],
     'style/semi': ['error', 'always']
   }
-}
+};
 
 /**
  * Construct an array of ESLint flat config items.
@@ -25,5 +25,5 @@ const userConfigDefaults: ESLintConfigUserConfigs = {
  *  The merged ESLint configurations.
  */
 export function bruceshih(options?: ESLintConfigOptions, ...userConfigs: ESLintConfigUserConfigs[]): ReturnType<typeof antfu> {
-  return antfu({ ...configDefaults, ...options }, ...userConfigs, userConfigDefaults)
+  return antfu({ ...configDefaults, ...options }, ...userConfigs, userConfigDefaults);
 }
