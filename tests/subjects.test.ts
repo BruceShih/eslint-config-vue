@@ -1,26 +1,26 @@
-import { join, resolve } from 'node:path';
-import { afterAll, beforeAll, it } from 'vitest';
-import fs from 'fs-extra';
-import { execa } from 'execa';
-import fg from 'fast-glob';
-import type { ESLintConfigOptions, ESLintConfigUserConfigs } from 'src/types';
+import { join, resolve } from 'node:path'
+import { afterAll, beforeAll, it } from 'vitest'
+import fs from 'fs-extra'
+import { execa } from 'execa'
+import fg from 'fast-glob'
+import type { ESLintConfigOptions, ESLintConfigUserConfigs } from 'src/types'
 
 beforeAll(async () => {
-  await fs.rm('_subjects', { recursive: true, force: true });
-});
+  await fs.rm('_subjects', { recursive: true, force: true })
+})
 afterAll(async () => {
-  await fs.rm('_subjects', { recursive: true, force: true });
-});
+  await fs.rm('_subjects', { recursive: true, force: true })
+})
 
 runWithConfig('js', {
   typescript: false,
-  vue: false
-});
+  vue: false,
+})
 runWithConfig('no-style', {
   typescript: true,
   vue: true,
-  stylistic: false
-});
+  stylistic: false,
+})
 runWithConfig(
   'tab-double-quotes',
   {
@@ -28,37 +28,37 @@ runWithConfig(
     vue: true,
     stylistic: {
       indent: 'tab',
-      quotes: 'double'
-    }
+      quotes: 'double',
+    },
   },
   {
     rules: {
-      'style/no-mixed-spaces-and-tabs': 'off'
-    }
-  }
-);
+      'style/no-mixed-spaces-and-tabs': 'off',
+    },
+  },
+)
 
 // https://github.com/antfu/eslint-config/issues/255
 runWithConfig(
   'ts-override',
   {
-    typescript: true
+    typescript: true,
   },
   {
     rules: {
-      'ts/consistent-type-definitions': ['error', 'type']
-    }
-  }
-);
+      'ts/consistent-type-definitions': ['error', 'type'],
+    },
+  },
+)
 
 runWithConfig(
   'with-formatters',
   {
     typescript: true,
     vue: true,
-    formatters: true
-  }
-);
+    formatters: true,
+  },
+)
 
 runWithConfig(
   'no-markdown-with-formatters',
@@ -66,22 +66,22 @@ runWithConfig(
     vue: false,
     markdown: false,
     formatters: {
-      markdown: true
-    }
-  }
-);
+      markdown: true,
+    },
+  },
+)
 
 function runWithConfig(name: string, configs: ESLintConfigOptions, ...items: ESLintConfigUserConfigs[]) {
   it.concurrent(name, async ({ expect }) => {
-    const from = resolve('subjects/input');
-    const output = resolve('subjects/output', name);
-    const target = resolve('_subjects', name);
+    const from = resolve('subjects/input')
+    const output = resolve('subjects/output', name)
+    const target = resolve('_subjects', name)
 
     await fs.copy(from, target, {
       filter: (src) => {
-        return !src.includes('node_modules');
-      }
-    });
+        return !src.includes('node_modules')
+      },
+    })
     await fs.writeFile(join(target, 'eslint.config.js'), `
 // @eslint-disable
 import bruceshih from '@bruceshih/eslint-config-vue'
@@ -90,31 +90,31 @@ export default bruceshih(
   ${JSON.stringify(configs)},
   ...${JSON.stringify(items) ?? []},
 )
-  `);
+  `)
 
     await execa('npx', ['eslint', '.', '--fix'], {
       cwd: target,
-      stdio: 'pipe'
-    });
+      stdio: 'pipe',
+    })
 
     const files = await fg('**/*', {
       ignore: [
         'node_modules',
-        'eslint.config.js'
+        'eslint.config.js',
       ],
-      cwd: target
-    });
+      cwd: target,
+    })
 
     await Promise.all(files.map(async (file) => {
-      const content = await fs.readFile(join(target, file), 'utf-8');
-      const source = await fs.readFile(join(from, file), 'utf-8');
-      const outputPath = join(output, file);
+      const content = await fs.readFile(join(target, file), 'utf-8')
+      const source = await fs.readFile(join(from, file), 'utf-8')
+      const outputPath = join(output, file)
       if (content === source) {
         if (fs.existsSync(outputPath))
-          fs.remove(outputPath);
-        return;
+          fs.remove(outputPath)
+        return
       }
-      await expect.soft(content).toMatchFileSnapshot(join(output, file));
-    }));
-  }, 30_000);
+      await expect.soft(content).toMatchFileSnapshot(join(output, file))
+    }))
+  }, 30_000)
 }
