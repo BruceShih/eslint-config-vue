@@ -37,7 +37,8 @@
   "peerDependencies": {
     "@antfu/eslint-config": "^2.11.3",
     "eslint": ">=8.40.0",
-    "eslint-flat-config-utils": "^0.1.2"
+    "eslint-flat-config-utils": "^0.1.2",
+    "eslint-plugin-format": "^0.1.0"
   },
   "devDependencies": {
     "@bruceshih/eslint-config-vue": "workspace:*",
@@ -49,6 +50,7 @@
     "fast-glob": "^3.3.2",
     "fs-extra": "^11.2.0",
     "jiti": "^1.21.0",
+    "prettier": "^3.2.5",
     "tsup": "^8.0.2",
     "typescript": "^5.4.3",
     "vitest": "^1.4.0",

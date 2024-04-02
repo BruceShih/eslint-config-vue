@@ -1,5 +1,5 @@
-import { bruceshih } from './factory';
+import { bruceshih } from './factory'
 
-export * from './factory';
+export * from './factory'
 
-export default bruceshih;
+export default bruceshih
