@@ -31,6 +31,7 @@
   "scripts": {
     "dev": "eslint-flat-config-viewer",
     "build": "tsup --format esm,cjs --clean --dts",
+    "release": "bump && pnpm publish",
     "lint": "eslint .",
     "test": "vitest"
   },
@@ -42,6 +43,7 @@
   },
   "devDependencies": {
     "@bruceshih/eslint-config-vue": "workspace:*",
+    "@jsdevtools/version-bump-prompt": "^6.1.0",
     "@types/fs-extra": "^11.0.4",
     "eslint-flat-config-utils": "^0.1.2",
     "eslint-flat-config-viewer": "^0.1.14",
