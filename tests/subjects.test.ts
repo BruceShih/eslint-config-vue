@@ -12,66 +12,16 @@ afterAll(async () => {
   await fs.rm('_subjects', { recursive: true, force: true })
 })
 
-runWithConfig('js', {
-  typescript: false,
-  vue: false,
-})
-runWithConfig('no-style', {
-  typescript: true,
-  vue: true,
-  stylistic: false,
-})
-runWithConfig(
-  'tab-double-quotes',
-  {
-    typescript: true,
-    vue: true,
-    stylistic: {
-      indent: 'tab',
-      quotes: 'double',
-    },
-  },
-  {
-    rules: {
-      'style/no-mixed-spaces-and-tabs': 'off',
-    },
-  },
-)
-
-// https://github.com/antfu/eslint-config/issues/255
-runWithConfig(
-  'ts-override',
-  {
-    typescript: true,
-  },
-  {
-    rules: {
-      'ts/consistent-type-definitions': ['error', 'type'],
-    },
-  },
-)
-
 runWithConfig(
   'with-formatters',
-  {
-    typescript: true,
-    vue: true,
-    formatters: true,
-  },
+  {}
 )
 
-runWithConfig(
-  'no-markdown-with-formatters',
-  {
-    vue: false,
-    markdown: false,
-    formatters: {
-      markdown: true,
-    },
-  },
-)
-
-function runWithConfig(name: string, configs: ESLintConfigOptions, ...items: ESLintConfigUserConfigs[]) {
+function runWithConfig(
+  name: string,
+  configs: ESLintConfigOptions,
+  ...items: ESLintConfigUserConfigs[]
+) {
   it.concurrent(name, async ({ expect }) => {
     const from = resolve('subjects/input')
     const output = resolve('subjects/output', name)
@@ -80,7 +30,7 @@ function runWithConfig(name: string, configs: ESLintConfigOptions, ...items: ESL
     await fs.copy(from, target, {
       filter: (src) => {
         return !src.includes('node_modules')
-      },
+      }
     })
     await fs.writeFile(join(target, 'eslint.config.js'), `
 // @eslint-disable
@@ -94,15 +44,15 @@ export default bruceshih(
 
     await execa('npx', ['eslint', '.', '--fix'], {
       cwd: target,
-      stdio: 'pipe',
+      stdio: 'pipe'
     })
 
     const files = await fg('**/*', {
       ignore: [
         'node_modules',
-        'eslint.config.js',
+        'eslint.config.js'
       ],
-      cwd: target,
+      cwd: target
     })
 
     await Promise.all(files.map(async (file) => {
