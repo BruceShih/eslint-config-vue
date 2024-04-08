@@ -10,6 +10,6 @@ const bruceshih = jiti('./src').default
 export default bruceshih({
   ignores: [
     'subjects',
-    '_subjects',
-  ],
+    '_subjects'
+  ]
 })

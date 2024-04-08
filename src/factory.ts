@@ -35,6 +35,9 @@ const userConfigDefaults: ESLintConfigUserConfigs = [
  * @returns {ReturnType<typeof antfu>}
  *  The merged ESLint configurations.
  */
-export function bruceshih(options?: ESLintConfigOptions, ...userConfigs: ESLintConfigUserConfigs[]): ReturnType<typeof antfu> {
+export function bruceshih(
+  options?: ESLintConfigOptions,
+  ...userConfigs: ESLintConfigUserConfigs[]
+): ReturnType<typeof antfu> {
   return antfu({ ...configDefaults, ...options }, ...userConfigs, userConfigDefaults)
 }
