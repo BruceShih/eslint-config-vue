@@ -17,7 +17,6 @@ const userConfigDefaults: ESLintConfigUserConfigs = [
   {
     rules: {
       'style/comma-dangle': ['error', 'never'],
-      'style/max-len': ['error', { code: 100 }],
       'style/multiline-ternary': ['error', 'always-multiline'],
       'style/no-tabs': ['error', { allowIndentationTabs: false }],
       'style/quotes': ['error', 'single']
