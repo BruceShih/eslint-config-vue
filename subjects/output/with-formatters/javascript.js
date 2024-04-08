@@ -20,7 +20,7 @@ class Person {
 const people = [
   new Person('Alice', 30),
   new Person('Bob', 25),
-  new Person('Charlie', 35),
+  new Person('Charlie', 35)
 ]
 
 // Use the forEach method to iterate over the array
