@@ -2,7 +2,7 @@
   "name": "@bruceshih/eslint-config-vue",
   "type": "module",
   "version": "1.3.2",
-  "packageManager": "pnpm@9.0.5",
+  "packageManager": "pnpm@9.0.6",
   "description": "Bruce's eslint config for Vue",
   "author": "Bruce Shih",
   "license": "MIT",
