@@ -13,7 +13,7 @@ importers:
         version: 9.3.0
     devDependencies:
       '@antfu/eslint-config':
-        specifier: ^2.18.0
+        specifier: ^2.18.1
         version: 2.18.1(@vue/compiler-sfc@3.4.27)(eslint-plugin-format@0.1.1(eslint@9.3.0))(eslint@9.3.0)(typescript@5.4.5)(vitest@1.6.0(@types/node@20.12.12))
       '@bruceshih/eslint-config-vue':
         specifier: workspace:*
