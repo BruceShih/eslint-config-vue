@@ -1,7 +1,7 @@
 {
   "name": "@bruceshih/eslint-config-vue",
   "type": "module",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "packageManager": "pnpm@9.5.0",
   "description": "Bruce's eslint config for Vue",
   "author": "Bruce Shih",
