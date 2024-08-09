@@ -29,30 +29,29 @@
     "dist"
   ],
   "scripts": {
-    "dev": "eslint-flat-config-viewer",
+    "dev": "npx @eslint/config-inspector --config eslint.config.ts",
     "build": "tsup --format esm,cjs --clean --dts",
     "release": "bumpp && pnpm publish",
     "lint": "eslint .",
     "test": "vitest"
   },
-  "peerDependencies": {
-    "@antfu/eslint-config": "^2.15.0",
-    "eslint": "^9.0.0",
-    "eslint-flat-config-utils": "^0.1.2",
-    "eslint-plugin-format": "^0.1.0"
+  "dependencies": {
+    "@antfu/eslint-config": "^2.25.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.25.0",
     "@bruceshih/eslint-config-vue": "workspace:*",
+    "@eslint/config-inspector": "^0.5.2",
+    "@types/eslint": "^9.6.0",
     "@types/fs-extra": "^11.0.4",
     "bumpp": "^9.4.2",
-    "eslint-flat-config-utils": "^0.1.2",
-    "eslint-flat-config-viewer": "^0.1.20",
+    "eslint": "npm:eslint-ts-patch@9.5.0-0",
+    "eslint-flat-config-utils": "^0.3.0",
     "eslint-plugin-format": "^0.1.2",
+    "eslint-ts-patch": "9.5.0-0",
+    "eslint-typegen": "^0.3.0",
     "execa": "^8.0.1",
     "fast-glob": "^3.3.2",
     "fs-extra": "^11.2.0",
-    "jiti": "^1.21.6",
     "prettier": "^3.3.3",
     "tsup": "^8.2.4",
     "typescript": "^5.5.4",
